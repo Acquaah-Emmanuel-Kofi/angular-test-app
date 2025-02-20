@@ -1,0 +1,29 @@
+<div class="tooltip" [class.tooltip-top]="tooltipPlacement() === 'top'"
+    [class.tooltip-bottom]="tooltipPlacement() === 'bottom'" [style.transform]="tooltipTransform()">
+    <div class="tooltip-header">
+        <span class="step-counter">Step {{step()}} of {{totalSteps()}}</span>
+        <button class="close-button" (click)="next.emit()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="tooltip-content">
+        {{content()}}
+    </div>
+
+    <div class="tooltip-footer">
+        @if (step() > 1) {
+        <button class="nav-button prev-button" (click)="prev.emit()">
+            <i class="fas fa-chevron-left"></i>
+            Previous
+        </button>
+        }
+
+        <button class="nav-button next-button" (click)="next.emit()">
+            {{step() === totalSteps() ? 'Finish' : 'Next'}}
+            @if (step() !== totalSteps()) {
+            <i class="fas fa-chevron-right"></i>
+            }
+        </button>
+    </div>
+</div>

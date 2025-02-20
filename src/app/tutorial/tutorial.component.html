@@ -1,0 +1,10 @@
+@if (showTutorial()) {
+<div class="tutorial-container">
+    <div class="tutorial-overlay"></div>
+
+    <app-tooltip [target]="tutorialSteps[currentStep() - 1].target"
+        [content]="tutorialSteps[currentStep() - 1].content" [step]="currentStep()"
+        [totalSteps]="tutorialSteps.length" (next)="handleNext()" (prev)="handlePrev()">
+    </app-tooltip>  
+</div>  
+}

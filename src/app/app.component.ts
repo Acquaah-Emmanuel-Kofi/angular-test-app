@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TutorialComponent } from './tutorial/tutorial.component';
 import { NavigationEnd } from '@angular/router';
-import { TutorialService } from './tutorial/services/tutorial.service';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { TutorialService } from './components/tutorial/services/tutorial.service';
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -53,5 +53,10 @@
       <i class="fas fa-file-export"></i>
       Export Report
     </button>
+
+    <app-button [customStyle]="{ 'border-radius': '20px', padding: '12px', width: '200px', display: 'flex', 'justify-content': 'center' }" variant="primary" buttonSize="large" [loading]="isLoading()" [disabled]="false"
+      (buttonClick)="handleClick($event)">
+      Submit
+    </app-button>
   </div>
 </div>

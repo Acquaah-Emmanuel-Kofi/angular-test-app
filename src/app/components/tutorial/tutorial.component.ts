@@ -10,8 +10,8 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
   styleUrl: './tutorial.component.scss',
 })
 export class TutorialComponent implements OnInit {
-  showTutorial = signal(false);
-  currentStep = signal(1);
+  showTutorial = signal<boolean>(false);
+  currentStep = signal<number>(1);
   tutorialSteps: TutorialStep[] = [
     {
       target: '#navbar',

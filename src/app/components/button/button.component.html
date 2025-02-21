@@ -1,0 +1,18 @@
+<button
+  [type]="type()"
+  (click)="handleClick($event)"
+  [ngClass]="[
+    'btn',
+    'btn-' + variant(),
+    'btn-' + size(),
+    customClass(),
+    loading() ? 'loading' : ''
+  ]"
+  [ngStyle]="customStyle()"
+  [disabled]="disabled() || loading()"
+>
+  @if (loading()) {
+  <div class="spinner"></div>
+  }
+  <ng-content></ng-content>
+</button>

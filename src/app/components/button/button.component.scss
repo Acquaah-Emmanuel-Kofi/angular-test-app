@@ -1,0 +1,76 @@
+// Define button colors
+$colors: (
+    primary: #007bff,
+    secondary: #6c757d,
+    success: #28a745,
+    danger: #dc3545
+);
+
+// Define button sizes
+$sizes: (
+    small: 0.5rem 1rem,
+    medium: 0.75rem 1.5rem,
+    large: 1rem 2rem
+);
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    // Loop through colors
+    @each $key, $color in $colors {
+        &.btn-#{$key} {
+            background-color: $color;
+            color: white;
+
+            &:hover {
+                background-color: darken($color, 10%);
+            }
+
+            &:disabled {
+                background-color: lighten($color, 15%);
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    // Loop through sizes
+    @each $key, $padding in $sizes {
+        &.btn-#{$key} {
+            padding: $padding;
+            font-size: if($key ==small, 0.875rem, if($key ==medium, 1rem, 1.25rem));
+        }
+    }
+
+    // Loading Spinner
+    &.loading {
+        position: relative;
+        pointer-events: none;
+
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid white;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+    }
+}
+
+// Spinner animation
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

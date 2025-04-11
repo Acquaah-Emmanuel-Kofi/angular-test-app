@@ -14,12 +14,12 @@
   font-family: "Lato";
   line-height: 1.6;
   word-break: break-word;
-  border: 5px solid red;
 }
 
 .editor-container_classic-editor .editor-container__editor {
   min-width: 795px;
   max-width: 795px;
+  min-height: 550px;
   max-height: 550px;
   overflow-y: auto;
 }

@@ -19,11 +19,6 @@ export class TutorialComponent implements OnInit {
         "This is your navigation bar. You'll find all the main sections of the app here.",
     },
     {
-      target: '#profile-button',
-      content:
-        'Click here to access your profile settings and account preferences.',
-    },
-    {
       target: '#dashboard-main',
       content:
         'This is your dashboard where you can see all your important information and recent activities.',
@@ -34,7 +29,6 @@ export class TutorialComponent implements OnInit {
         'Use these quick action buttons to perform common tasks with just one click.',
     },
   ];
-
 
   ngOnInit(): void {
     const hasSeenTutorial = localStorage.getItem('hasSeenTutorial');

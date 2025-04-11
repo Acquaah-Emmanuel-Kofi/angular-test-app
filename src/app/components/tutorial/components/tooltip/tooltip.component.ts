@@ -46,12 +46,15 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
   constructor(private elementRef: ElementRef) {
     this.scrollHandler = () => this.updatePosition();
 
-    // Set up effect for position updates
     effect(() => {
-      // This will re-run whenever position() or placement() changes
       const pos = this.position();
       const place = this.placement();
-      // Any additional side effects that need to happen on position change
+
+      this.elementRef.nativeElement.style.top = `${pos.top}px`;
+      this.elementRef.nativeElement.style.left = `${pos.left}px`;
+      this.elementRef.nativeElement.classList.remove('tooltip-bottom');
+      this.elementRef.nativeElement.classList.remove('tooltip-top');
+      this.elementRef.nativeElement.classList.add(`tooltip-${place}`);
     });
   }
 
@@ -67,17 +70,14 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
   }
 
   private initializeObservers(): void {
-    // Create ResizeObserver
     this.resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(() => this.updatePosition());
     });
 
-    // Create MutationObserver
     this.mutationObserver = new MutationObserver(() => {
       requestAnimationFrame(() => this.updatePosition());
     });
 
-    // Observe both target element and tooltip
     const targetElement = document.querySelector(this.target());
     if (targetElement) {
       this.resizeObserver.observe(targetElement);
@@ -117,11 +117,9 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
     const viewportHeight = window.innerHeight;
     const viewportWidth = window.innerWidth;
 
-    // Calculate available space
     const spaceAbove = targetRect.top;
     const spaceBelow = viewportHeight - targetRect.bottom;
 
-    // Determine vertical position and placement
     let top: number;
     if (spaceBelow >= tooltipRect.height + 10) {
       top = targetRect.bottom + 10;
@@ -134,13 +132,10 @@ export class TooltipComponent implements AfterViewInit, OnDestroy {
       this.placement.set('bottom');
     }
 
-    // Calculate horizontal position
     let left = targetRect.left + (targetRect.width - tooltipRect.width) / 2;
 
-    // Adjust for viewport boundaries
     left = Math.max(10, Math.min(left, viewportWidth - tooltipRect.width - 10));
 
-    // Update position signal
     this.position.set({ top, left });
   }
 }

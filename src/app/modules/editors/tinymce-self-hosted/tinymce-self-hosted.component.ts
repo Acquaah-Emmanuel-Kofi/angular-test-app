@@ -290,7 +290,7 @@ export class TinymceSelfHostedComponent {
     branding: false,
     promotion: false,
     menubar: true,
-    height: 550,
+    height: 700,
     license_key: 'gpl',
     plugins: 'lists link image paste table code help wordcount',
     toolbar:

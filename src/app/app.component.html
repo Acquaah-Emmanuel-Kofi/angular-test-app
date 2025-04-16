@@ -1,4 +1,4 @@
-<app-tutorial></app-tutorial>
+<app-tutorial />
 
 <nav id="navbar" class="navbar">
   <div class="navbar-brand">
@@ -6,57 +6,10 @@
     <h1>Dashboard</h1>
   </div>
   <ul class="nav-links">
-    <li><a href="/home">Home</a></li>
-    <li><a href="/analytics">Analytics</a></li>
-    <li><a href="/reports">Reports</a></li>
-    <li><a href="/settings">Settings</a></li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/tinymce-self-hosted">TinyMCE</a></li>
+    <li><a routerLink="/ckeditor-5">CKEditor 5</a></li>
   </ul>
 </nav>
 
-<button id="profile-button" class="profile-btn">
-  <img src="assets/avatar.png" alt="Profile" class="avatar">
-  <span>John Doe</span>
-</button>
-
-<main id="dashboard-main" class="dashboard-container">
-  <section class="stats-overview">
-    <h2>Overview</h2>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h3>Total Users</h3>
-        <p class="stat-value">1,234</p>
-      </div>
-      <div class="stat-card">
-        <h3>Active Projects</h3>
-        <p class="stat-value">56</p>
-      </div>
-      <div class="stat-card">
-        <h3>Revenue</h3>
-        <p class="stat-value">$45,678</p>
-      </div>
-    </div>
-  </section>
-</main> 
-
-<div id="quick-actions" class="quick-actions">
-  <h2>Quick Actions</h2>
-  <div class="action-buttons">
-    <button class="action-btn">
-      <i class="fas fa-plus"></i>
-      New Project
-    </button>
-    <button class="action-btn">
-      <i class="fas fa-user-plus"></i>
-      Add User
-    </button>
-    <button class="action-btn">
-      <i class="fas fa-file-export"></i>
-      Export Report
-    </button>
-
-    <app-button [customStyle]="{ 'border-radius': '20px', padding: '12px', width: '200px', display: 'flex', 'justify-content': 'center' }" variant="primary" buttonSize="large" [loading]="isLoading()" [disabled]="false"
-      (buttonClick)="handleClick($event)">
-      Submit
-    </app-button>
-  </div>
-</div>
+<router-outlet />

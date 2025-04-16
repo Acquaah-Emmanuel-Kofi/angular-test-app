@@ -1,20 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { NavigationEnd } from '@angular/router';
-import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { TutorialService } from './components/tutorial/services/tutorial.service';
-import { ButtonComponent } from './components/button/button.component';
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TutorialComponent, ButtonComponent],
+  imports: [RouterLink, RouterOutlet, TutorialComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  isLoading = signal<boolean>(false);
-
   constructor(
     private router: Router,
     private tutorialService: TutorialService
@@ -31,14 +32,5 @@ export class AppComponent {
           this.tutorialService.startTutorial();
         }
       });
-  }
-
-  handleClick(event: MouseEvent): void {
-    console.log('Button clicked!', event);
-    this.isLoading.set(true);
-
-    setTimeout(() => {
-      this.isLoading.set(false);
-    }, 3000);
   }
 }

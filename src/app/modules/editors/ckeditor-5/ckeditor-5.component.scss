@@ -1,0 +1,29 @@
+@media print {
+  body {
+    margin: 0 !important;
+  }
+}
+
+.main-container {
+  font-family: "Lato";
+  width: fit-content;
+  margin: 1rem auto;
+}
+
+.ck-content {
+  font-family: "Lato";
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.editor-container_classic-editor .editor-container__editor {
+  min-width: 795px;
+  max-width: 795px;
+  min-height: 550px;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.editor-container_include-block-toolbar {
+  margin-left: 42px;
+}
